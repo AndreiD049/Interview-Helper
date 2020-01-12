@@ -11,6 +11,7 @@ def select_n_random_files(n, path, ext=None):
     #make sure path ends with a separator
     if path[-1] != os.path.sep: path += os.path.sep
     files = glob.glob(path + "*" + (("." + ext) if ext != None else ""))
+    random.shuffle(files)
     return random.sample(files, n) if len(files) > n else files
 
 def select_n_valid_files(validator, n, path, ext=None):

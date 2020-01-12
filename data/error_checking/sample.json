@@ -1,9 +1,10 @@
 {
-    "image": "D:\\Interview\\data\\typing\\sample.json",
-    "question": "question",
+    "image": "G:\\Interview-Helper\\assets\\images\\cat.jpg",
+    "question": "Who is on this picture?",
+    "answer": "Cat",
     "options": [
-        "option1",
-        "option2",
-        "option3"
+        "Cat",
+        "Dog",
+        "Fish"
     ]
 }

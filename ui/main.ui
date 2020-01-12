@@ -168,7 +168,7 @@ QPushButton:hover
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; font-size:18pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Roboto';&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::NoTextInteraction</set>
@@ -272,11 +272,11 @@ p, li { white-space: pre-wrap; }
       <widget class="QWidget" name="errorCheckPage">
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QScrollArea" name="scrollArea">
+         <widget class="ErrorCheckingArea" name="errorCheckArea">
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents">
+          <widget class="QWidget" name="contents">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -314,7 +314,7 @@ p, li { white-space: pre-wrap; }
 }</string>
               </property>
               <property name="text">
-               <string>Error Cheking</string>
+               <string>Error Checking</string>
               </property>
              </widget>
             </item>
@@ -353,7 +353,7 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-             <widget class="QLabel" name="imgLabel">
+             <widget class="QLabel" name="imgErrorLabel">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -405,10 +405,10 @@ p, li { white-space: pre-wrap; }
               </property>
              </spacer>
             </item>
-            <item>
-             <widget class="QTextBrowser" name="textBrowser">
+            <item alignment="Qt::AlignVCenter">
+             <widget class="QTextBrowser" name="lErrorCheckQuestion">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -418,6 +418,52 @@ p, li { white-space: pre-wrap; }
                 <width>0</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="sizeIncrement">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="baseSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Roboto</family>
+                <pointsize>16</pointsize>
+               </font>
+              </property>
+              <property name="contextMenuPolicy">
+               <enum>Qt::NoContextMenu</enum>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="sizeAdjustPolicy">
+               <enum>QAbstractScrollArea::AdjustToContents</enum>
+              </property>
+              <property name="autoFormatting">
+               <set>QTextEdit::AutoBulletList</set>
+              </property>
+              <property name="lineWrapMode">
+               <enum>QTextEdit::WidgetWidth</enum>
+              </property>
+              <property name="html">
+               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Roboto'; font-size:16pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;test&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="textInteractionFlags">
+               <set>Qt::NoTextInteraction</set>
               </property>
              </widget>
             </item>
@@ -438,7 +484,14 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item>
-             <widget class="QComboBox" name="comboBox"/>
+             <widget class="QComboBox" name="cmbErrorCheck">
+              <property name="font">
+               <font>
+                <family>Roboto</family>
+                <pointsize>16</pointsize>
+               </font>
+              </property>
+             </widget>
             </item>
             <item>
              <spacer name="verticalSpacer_8">
@@ -457,7 +510,7 @@ p, li { white-space: pre-wrap; }
              </spacer>
             </item>
             <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="errorCheckNextButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -524,6 +577,12 @@ p, li { white-space: pre-wrap; }
    <class>ExpectedTextBrowser</class>
    <extends>QTextBrowser</extends>
    <header>src/ExpectedTextBrowser.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ErrorCheckingArea</class>
+   <extends>QScrollArea</extends>
+   <header>src/ErrorCheckingArea.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

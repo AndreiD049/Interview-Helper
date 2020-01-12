@@ -6,5 +6,4 @@ from PyQt5 import QtWidgets
 
 wrapper = App(QtWidgets.QApplication(sys.argv))
 wrapper.mainWindow.show()
-
 sys.exit(wrapper.app.exec_())

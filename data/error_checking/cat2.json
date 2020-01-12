@@ -1,0 +1,9 @@
+{
+    "image": "G:\\Interview-Helper\\assets\\images\\dog.jpg",
+    "question": "Is this a cat?",
+    "answer": "No",
+    "options": [
+        "Yes",
+        "No"
+    ]
+}

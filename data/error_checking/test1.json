@@ -1,0 +1,10 @@
+{
+    "image": "G:\\Interview-Helper\\assets\\images\\test1.png",
+    "question": "What is on the picture?",
+    "answer": "table",
+    "options": [
+        "Table",
+        "Image",
+        "Game"
+    ]
+}

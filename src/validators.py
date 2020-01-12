@@ -37,6 +37,8 @@ class ErrorCheckingValidator:
                 return False
             if "question" not in d:
                 return False
+            if "answer" not in d:
+                return False
             if "options" not in d:
                 return False
             return True

@@ -12,7 +12,7 @@ class TypingTextEdit(QtWidgets.QTextEdit):
         super(TypingTextEdit, self).keyPressEvent(e)
 
     def onTextChange(self):
-        words = len(self.toPlainText().split(" "))
+        words = len((self.toPlainText()+'|').split())
         self.currentWord = words if words != 0 else 1
 
     
