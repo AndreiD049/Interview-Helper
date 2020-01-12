@@ -1,0 +1,4 @@
+
+{
+    "expected": "Widgets automatically detect HTML markup and display rich text accordingly. For example, setting a label's text property with the string will result in the label displaying text like this: Hello Qt!\nWhen HTML markup is used for text, Qt follows the rules defined by the HTML 4 specification. This includes default properties for text layout, such as the direction of the text flow (left-to-right) which can be changed by applying the dir attribute to blocks of text."
+}

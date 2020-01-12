@@ -1,16 +1,15 @@
+import json
 import sys
-from ui import Ui_MainWindow
-from PyQt5 import QtCore, QtGui, QtWidgets
-
-def hello():
-    print("Hello there")
+from src.App import App
+from src.MainWin import Ui_MainWindow
+from PyQt5 import QtWidgets
 
 app = QtWidgets.QApplication(sys.argv)
 MainWindow = QtWidgets.QMainWindow()
 ui = Ui_MainWindow()
 ui.setupUi(MainWindow)
+wrap = App(app, ui)
 MainWindow.show()
 
-ui.pushButton.clicked.connect(hello)
 
-sys.exit(app.exec_())
+sys.exit(wrap.app.exec_())
