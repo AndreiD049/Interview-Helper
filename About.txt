@@ -30,13 +30,17 @@ Function/Classes needed for MVP:
 ===========================
 
 
-
-
-
-===========================
-|                         |
-|                         |
-|           GUI           |
-|                         |
-|                         |
-===========================
+Project structure:
+--------
+|
+|-data (tests json documents)
+|
+|-src (all python source files)
+|    |- App.py
+|    |- ExpectedTextBrowser.py
+|    |- MainWin.py
+|    |- typing_test.py
+|    |- TypingTextEdit.py
+|-  ui
+|    |- main.ui (file from QtDesigner)
+|- main.py

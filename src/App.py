@@ -1,25 +1,39 @@
 import json
+from src.MainWin import Ui_MainWindow
+from PyQt5 import QtWidgets
 
-class App:
+class App(Ui_MainWindow):
 
-    def __init__(self, app, ui):
+    def __init__(self, app):
         self.app = app
-        self.ui = ui
-        self.initExpectedWindow()
+        self.mainWindow = QtWidgets.QMainWindow()
+        self.setupUi(self.mainWindow)
         self.setupTextEditSignal()
         self.setupStartButtonSignal()
 
+
     def initExpectedWindow(self):
-        exp = self.ui.expectedText
+        exp = self.expectedText
+        # select a random file from the configuration path
         fp = open("./data/typing/sample.json")
         d = json.load(fp)
         exp.insertHtml(f"{d['expected']}")
-        exp.format_text(self.ui.textEdit.currentWord)
+        exp.format_text(self.textEdit.currentWord)
 
     def setupTextEditSignal(self):
-        textEdit = self.ui.textEdit
+        textEdit = self.textEdit
         textEdit.textChanged.connect(textEdit.onTextChange)
-        textEdit.textChanged.connect(lambda : self.ui.expectedText.format_text(textEdit.currentWord))
+        textEdit.textChanged.connect(lambda : self.expectedText.format_text(textEdit.currentWord))
 
     def setupStartButtonSignal(self):
-        self.ui.startButton.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(1))
+        def startPressed():
+            self.initExpectedWindow()
+            self.stackedWidget.setCurrentIndex(1)
+            # connect the next button
+            self.setupTypingNextButton()
+        self.startButton.clicked.connect(startPressed)
+
+    def setupTypingNextButton(self):
+        def nextPressed():
+            self.stackedWidget.setCurrentIndex(2)
+        self.typingNextButton.clicked.connect(nextPressed)

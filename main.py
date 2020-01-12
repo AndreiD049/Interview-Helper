@@ -4,12 +4,7 @@ from src.App import App
 from src.MainWin import Ui_MainWindow
 from PyQt5 import QtWidgets
 
-app = QtWidgets.QApplication(sys.argv)
-MainWindow = QtWidgets.QMainWindow()
-ui = Ui_MainWindow()
-ui.setupUi(MainWindow)
-wrap = App(app, ui)
-MainWindow.show()
+wrapper = App(QtWidgets.QApplication(sys.argv))
+wrapper.mainWindow.show()
 
-
-sys.exit(wrap.app.exec_())
+sys.exit(wrapper.app.exec_())
