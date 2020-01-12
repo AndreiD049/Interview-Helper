@@ -44,3 +44,10 @@ Project structure:
 |-  ui
 |    |- main.ui (file from QtDesigner)
 |- main.py
+
+
+TODOS:
+
+1. Add config file support (json)
+2. Add timer to the typing scren
+3. Set up result saving
