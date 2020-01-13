@@ -1,9 +1,10 @@
 import json
 import sys
-from src.App import App
-from src.MainWin import Ui_MainWindow
+from src.AppView import MainWindow
 from PyQt5 import QtWidgets
 
-wrapper = App(QtWidgets.QApplication(sys.argv))
-wrapper.mainWindow.show()
-sys.exit(wrapper.app.exec_())
+app = QtWidgets.QApplication(sys.argv)
+main = MainWindow()
+main.show()
+main.startUp()
+sys.exit(app.exec_())
