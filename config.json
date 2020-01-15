@@ -1,0 +1,14 @@
+{
+    "screens": [
+        {
+            "name": "StartScreen"
+        },
+        {
+            "name": "TypingScreen",
+            "timeLimit": "60"
+        }
+    ],
+    "TypingTestsFolder": "./data/typing/",
+    "ErrorCheckingTestsFolder": "./data/error_checking/",
+    "resultsFolder": "./data/results/"
+}
