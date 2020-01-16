@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '.\typing_page.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -230,7 +230,7 @@ class Ui_Form(object):
         self.typingNextButton.setMinimumSize(QtCore.QSize(100, 50))
         font = QtGui.QFont()
         font.setFamily("Roboto Black")
-        font.setPointSize(16)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.typingNextButton.setFont(font)
@@ -257,6 +257,6 @@ class Ui_Form(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'Roboto\'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Roboto\';\"><br /></p></body></html>"))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.textEdit.setPlaceholderText(_translate("Form", "Place cursor here and start typing..."))
         self.typingNextButton.setText(_translate("Form", "Submit"))

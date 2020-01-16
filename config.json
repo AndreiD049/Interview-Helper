@@ -5,7 +5,12 @@
         },
         {
             "name": "TypingScreen",
-            "timeLimit": "60"
+            "timeLimit": 30
+        },
+        {
+            "name": "ErrorCheckingScreen",
+            "filesCount": 3,
+            "timeLimit": 20
         }
     ],
     "TypingTestsFolder": "./data/typing/",

@@ -20,7 +20,7 @@
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+   <item>
     <widget class="QLabel" name="HeaderLabel">
      <property name="font">
       <font>
@@ -88,7 +88,7 @@
      <property name="font">
       <font>
        <family>Roboto Black</family>
-       <pointsize>16</pointsize>
+       <pointsize>18</pointsize>
        <weight>75</weight>
        <bold>true</bold>
       </font>
@@ -100,6 +100,9 @@ QPushButton:pressed {margin-top:3px;}</string>
      </property>
      <property name="text">
       <string>Got it</string>
+     </property>
+     <property name="autoDefault">
+      <bool>false</bool>
      </property>
     </widget>
    </item>

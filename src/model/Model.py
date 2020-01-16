@@ -1,16 +1,19 @@
 import uuid
 import os
+import json
 
 class Model:
 
     def __init__(self, controller):
         self.controller = controller
-        self.initResultFile()
     
-    def initResultFile(self):
+
+    def initNewFile(self):
         cfg = self.controller.config
         self.filename = os.path.join(cfg["resultsFolder"], f"{uuid.uuid4()}.json")
-        # Create result file
-        with open(self.filename, 'w'):
-            pass
+
+        with open(self.filename, "x") as fp:
+            d = dict()
+            json.dump(d, fp)
+            
             

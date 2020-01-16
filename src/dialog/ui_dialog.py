@@ -61,6 +61,7 @@ class Ui_Dialog(object):
         self.pushButton.setStyleSheet("QPushButton {padding:10px;background-color:red;color:white;border:none;}\n"
 "QPushButton:hover {background-color:coral;}\n"
 "QPushButton:pressed {margin-top:3px;}")
+        self.pushButton.setAutoDefault(False)
         self.pushButton.setObjectName("pushButton")
         self.verticalLayout.addWidget(self.pushButton, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)

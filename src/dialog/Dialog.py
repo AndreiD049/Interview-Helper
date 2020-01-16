@@ -7,3 +7,5 @@ class Dialog(QtWidgets.QDialog):
         QtWidgets.QDialog.__init__(self, *args, **kwargs)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.ui.pushButton.clicked.connect(self.close)
+        self.ui.HeaderLabel.setFocus()

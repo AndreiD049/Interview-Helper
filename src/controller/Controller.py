@@ -4,6 +4,7 @@ import sys
 import src.utils as utils
 from src.Exceptions import ConfigError
 from src.typing_page.TypingPage import TypingPage
+from src.error_checking.ErrorCheckingPage import ErrorCheckingScreen
 from src.validators import ValidatorErrorChecking, ValidatorTyping
 
 
@@ -41,7 +42,8 @@ class Controller:
         
         self._screen_hooks = {
             "StartScreen": self.goToMainScreen,
-            "TypingScreen": self.initTypingScreen
+            "TypingScreen": self.initTypingScreen,
+            "ErrorCheckingScreen": self.initErrorCheckingScreen
         }
 
     def setModel(self, model):
@@ -70,6 +72,8 @@ class Controller:
         """
         calls the initialization function for the next screen
         """
+        # if we're just starting, create a new "results" file
+        if self.curIdx == 0: self.model.initNewFile()
         l = len(self.config["screens"])
         self.curIdx = self.curIdx + 1 if (self.curIdx + 1) < l else 0
         self._screen_hooks[self.config["screens"][self.curIdx]["name"]]()
@@ -83,6 +87,9 @@ class Controller:
         """
         TypingPage(self.view)
 
+    def initErrorCheckingScreen(self):
+        ErrorCheckingScreen(self.view)
+
     def goToMainScreen(self):
         self.view.ui.stackedWidget.setCurrentIndex(0)
 
@@ -93,6 +100,9 @@ class Controller:
         # get the current screen name
         screen = self.config["screens"][self.curIdx]["name"]
         return utils.select_n_valid_files(_validators[screen].validate, n, path, "json")
+
+    def getResultFileName(self):
+        return self.model.filename
 
 
 if __name__ == "__main__":

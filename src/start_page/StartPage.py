@@ -9,8 +9,8 @@ class StartPage(QtWidgets.QWidget):
         self.ui = Ui_StartPage()
         self.ui.setupUi(self)
         self.mainWindow = self.parent()
-        self.setupSignals()
         self.mainWindow.ui.stackedWidget.addWidget(self)
+        self.setupSignals()
 
     def showDialog(self):
         d = Dialog() 
@@ -22,8 +22,15 @@ class StartPage(QtWidgets.QWidget):
         d.exec_()
 
     def startUp(self):
-        pass
+        self.setupSignals()
 
     def setupSignals(self):
-        self.ui.pushButton.clicked.connect(self.mainWindow.controller.nextScreen)
+        self.ui.pushButton.clicked.connect(self.btnPress)
+
+    def btnPress(self):
+        self.cleanup()
+        self.mainWindow.controller.nextScreen()
+
+    def cleanup(self):
+        self.ui.pushButton.clicked.disconnect()
         

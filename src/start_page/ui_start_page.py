@@ -24,7 +24,7 @@ class Ui_StartPage(object):
         self.pushButton = QtWidgets.QPushButton(StartPage)
         font = QtGui.QFont()
         font.setFamily("Roboto Black")
-        font.setPointSize(16)
+        font.setPointSize(18)
         font.setBold(True)
         font.setWeight(75)
         self.pushButton.setFont(font)
