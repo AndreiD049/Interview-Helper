@@ -53,6 +53,7 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
                 pix = QtGui.QPixmap(d["image"])
                 self.ui.imgLabel.setPixmap(pix)
                 self.ui.textBrowser.setPlainText(d["question"])
+                self.ui.lcdNumber.display(self.currentCfg["timeLimit"])
                 self.ui.comboBox.clear()
                 self.ui.comboBox.addItems(d["options"])
         except IndexError:

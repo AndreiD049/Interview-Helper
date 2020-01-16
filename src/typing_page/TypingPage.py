@@ -108,6 +108,7 @@ class TypingPage(QtWidgets.QWidget):
             self.thread.requestInterruption()
             self.thread.quit()
             self.thread.wait()
+            # emit the finished event imediately and disconnect it to avoid duplicates
             self.thread.finished.emit()
             self.thread.finished.disconnect()
         if self.thread.isFinished():
