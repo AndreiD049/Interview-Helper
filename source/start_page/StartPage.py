@@ -1,6 +1,6 @@
-from PyQt5 import QtWidgets, QtGui, QtCore
-from src.start_page.ui_start_page import Ui_StartPage
-from src.dialog.Dialog import Dialog
+from PySide2 import QtWidgets, QtGui, QtCore
+from source.start_page.ui_start_page import Ui_StartPage
+from source.dialog.Dialog import Dialog
 
 class StartPage(QtWidgets.QWidget):
 

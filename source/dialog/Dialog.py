@@ -1,5 +1,5 @@
-from PyQt5 import QtWidgets
-from src.dialog.ui_dialog import Ui_Dialog
+from PySide2 import QtWidgets
+from source.dialog.ui_dialog import Ui_Dialog
 
 class Dialog(QtWidgets.QDialog):
 

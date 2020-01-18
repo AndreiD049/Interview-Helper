@@ -1,8 +1,8 @@
 import json
 import os
-from PyQt5 import QtCore, QtGui, QtWidgets
-from src.error_checking.ui_error_checking import Ui_Form
-from src.dialog.Dialog import Dialog
+from PySide2 import QtCore, QtGui, QtWidgets
+from source.error_checking.ui_error_checking import Ui_Form
+from source.dialog.Dialog import Dialog
 
 
 class ErrorCheckingScreen(QtWidgets.QWidget):

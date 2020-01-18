@@ -1,21 +1,21 @@
 import json
 from time import time
-from PyQt5 import QtWidgets, QtGui, QtCore
-from src.typing_page.ui_typing_page import Ui_Form
-from src.dialog.Dialog import Dialog
+from PySide2 import QtWidgets, QtGui, QtCore
+from source.typing_page.ui_typing_page import Ui_Form
+from source.dialog.Dialog import Dialog
 
 
 
 class CountDownWorker(QtCore.QObject):
 
-    timer_signal = QtCore.pyqtSignal(int)
-    timer_end = QtCore.pyqtSignal()
+    timer_signal = QtCore.Signal(int)
+    timer_end = QtCore.Signal()
 
     def __init__(self, seconds_left):
         super(CountDownWorker, self).__init__()
         self.left = seconds_left
 
-    @QtCore.pyqtSlot()
+    @QtCore.Slot()
     def update_timer(self):
         while self.left > 0:
             QtCore.QThread.msleep(1000)
@@ -146,7 +146,7 @@ class TypingPage(QtWidgets.QWidget):
         words = len((self.ui.textEdit.toPlainText()+'|').split())
         self.currentWord = words if words != 0 else 1
 
-    @QtCore.pyqtSlot(int)
+    @QtCore.Slot(int)
     def update_timer(self, secondsLeft):
         self.secondsLeft = secondsLeft
         self.ui.lcdNumber.display(self.secondsLeft)

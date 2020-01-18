@@ -1,9 +1,9 @@
 import json
 import sys
-from src.AppView import MainWindow
-from PyQt5 import QtWidgets
+from source.AppView import MainWindow
+from PySide2 import QtWidgets
 
-app = QtWidgets.QApplication(sys.argv)
+app = QtWidgets.QApplication() 
 main = MainWindow()
 main.show()
 main.startUp()

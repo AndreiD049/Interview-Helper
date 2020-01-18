@@ -1,11 +1,11 @@
 import json
 import os
 import sys
-import src.utils as utils
-from src.Exceptions import ConfigError
-from src.typing_page.TypingPage import TypingPage
-from src.error_checking.ErrorCheckingPage import ErrorCheckingScreen
-from src.validators import ValidatorErrorChecking, ValidatorTyping
+import source.utils as utils
+from source.Exceptions import ConfigError
+from source.typing_page.TypingPage import TypingPage
+from source.error_checking.ErrorCheckingPage import ErrorCheckingScreen
+from source.validators import ValidatorErrorChecking, ValidatorTyping
 
 
 __def_config = {

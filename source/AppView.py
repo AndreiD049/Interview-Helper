@@ -1,9 +1,9 @@
-from PyQt5 import QtWidgets, QtCore, QtGui
-from src.ui_main import Ui_Main
-from src.start_page.StartPage import StartPage
-from src.typing_page.TypingPage import TypingPage
-from src.controller.Controller import Controller
-from src.model.Model import Model
+from PySide2 import QtWidgets, QtCore, QtGui
+from source.ui_main import Ui_Main
+from source.start_page.StartPage import StartPage
+from source.typing_page.TypingPage import TypingPage
+from source.controller.Controller import Controller
+from source.model.Model import Model
 
 class MainWindow(QtWidgets.QMainWindow):
 
