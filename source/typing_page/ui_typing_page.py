@@ -19,16 +19,31 @@ class Ui_Form(object):
     def setupUi(self, Form):
         if Form.objectName():
             Form.setObjectName(u"Form")
-        Form.resize(896, 665)
+        Form.resize(1067, 839)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
         Form.setSizePolicy(sizePolicy)
-        Form.setStyleSheet(u"QPushButton { color: white;background-color: red; padding: 10px; border:none;}\n"
-"QPushButton:hover { background-color: coral;}\n"
+        Form.setStyleSheet(u"QTextBrowser, QTextEdit { \n"
+"background-color: #3D435E;\n"
+"color: #fff;\n"
+"border-radius: 4px;\n"
+"border: 1px solid #E9E8E8;\n"
+"}\n"
+"QWidget#Form {\n"
+"background-color: #2D3246;\n"
+"}\n"
+"QLabel {\n"
+"color: #fff;\n"
+"}\n"
+"QFrame#timeFrame {\n"
+"background-color: #3D435E;\n"
+"border-radius: 16px;\n"
+"}\n"
+"QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;}\n"
+"QPushButton:hover {background-color:#CF8349;}\n"
 "QPushButton:pressed {margin-top:3px;}\n"
-"QTextBrowser, QTextEdit { border-top: none; border-left: 1px solid lightgrey; border-right: 1px solid lightgrey; border-bottom: 2px solid lightgrey;}\n"
 "")
         self.horizontalLayout = QHBoxLayout(Form)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
@@ -38,10 +53,10 @@ class Ui_Form(object):
         self.lHeader = QLabel(Form)
         self.lHeader.setObjectName(u"lHeader")
         font = QFont()
-        font.setFamily(u"Roboto Black")
-        font.setPointSize(22)
-        font.setBold(True)
-        font.setWeight(75);
+        font.setFamily(u"Roboto Light")
+        font.setPointSize(60)
+        font.setBold(False)
+        font.setWeight(50);
         self.lHeader.setFont(font)
         self.lHeader.setTextFormat(Qt.AutoText)
         self.lHeader.setMargin(10)
@@ -52,93 +67,56 @@ class Ui_Form(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.lcdNumber = QLCDNumber(Form)
-        self.lcdNumber.setObjectName(u"lcdNumber")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Minimum)
+        self.timeFrame = QFrame(Form)
+        self.timeFrame.setObjectName(u"timeFrame")
+        self.timeFrame.setMinimumSize(QSize(103, 32))
+        self.timeFrame.setMaximumSize(QSize(16777215, 16777215))
+        self.timeFrame.setFrameShape(QFrame.StyledPanel)
+        self.timeFrame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_2 = QHBoxLayout(self.timeFrame)
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalLayout_2.setContentsMargins(15, 3, 15, 3)
+        self.label_2 = QLabel(self.timeFrame)
+        self.label_2.setObjectName(u"label_2")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.lcdNumber.sizePolicy().hasHeightForWidth())
-        self.lcdNumber.setSizePolicy(sizePolicy1)
-        palette = QPalette()
-        brush = QBrush(QColor(255, 255, 255, 255))
-        brush.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
-        brush1 = QBrush(QColor(0, 0, 0, 255))
-        brush1.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Active, QPalette.Button, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Light, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Midlight, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Dark, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Mid, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Text, brush)
-        palette.setBrush(QPalette.Active, QPalette.BrightText, brush)
-        palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Active, QPalette.Base, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Window, brush1)
-        palette.setBrush(QPalette.Active, QPalette.Shadow, brush1)
-        palette.setBrush(QPalette.Active, QPalette.AlternateBase, brush1)
-        brush2 = QBrush(QColor(255, 255, 220, 255))
-        brush2.setStyle(Qt.SolidPattern)
-        palette.setBrush(QPalette.Active, QPalette.ToolTipBase, brush2)
-        palette.setBrush(QPalette.Active, QPalette.ToolTipText, brush1)
-        brush3 = QBrush(QColor(255, 255, 255, 128))
-        brush3.setStyle(Qt.SolidPattern)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush3)
-#endif
-        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Light, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Midlight, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Dark, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Mid, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.BrightText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        palette.setBrush(QPalette.Inactive, QPalette.Base, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.Shadow, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush1)
-        palette.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush2)
-        palette.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush1)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush3)
-#endif
-        palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Light, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Midlight, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Dark, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Mid, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Text, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.BrightText, brush)
-        palette.setBrush(QPalette.Disabled, QPalette.ButtonText, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Base, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.Shadow, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush1)
-        palette.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush2)
-        palette.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush1)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush3)
-#endif
-        self.lcdNumber.setPalette(palette)
+        sizePolicy1.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy1)
+        self.label_2.setMinimumSize(QSize(0, 0))
+        self.label_2.setPixmap(QPixmap(u"G:/Interview-Helper/assets/icons/timer_white_1x.png"))
+        self.label_2.setScaledContents(False)
+        self.label_2.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_2.setMargin(0)
+
+        self.horizontalLayout_2.addWidget(self.label_2)
+
+        self.lcdNumber = QLabel(self.timeFrame)
+        self.lcdNumber.setObjectName(u"lcdNumber")
         font1 = QFont()
         font1.setFamily(u"Roboto")
-        font1.setPointSize(9)
+        font1.setPointSize(14)
         self.lcdNumber.setFont(font1)
-        self.lcdNumber.setStyleSheet(u"")
-        self.lcdNumber.setFrameShape(QFrame.NoFrame)
-        self.lcdNumber.setFrameShadow(QFrame.Raised)
-        self.lcdNumber.setLineWidth(1)
-        self.lcdNumber.setSmallDecimalPoint(False)
-        self.lcdNumber.setProperty("value", 50.000000000000000)
-        self.lcdNumber.setProperty("intValue", 50)
+        self.lcdNumber.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
-        self.verticalLayout.addWidget(self.lcdNumber, 0, Qt.AlignRight)
+        self.horizontalLayout_2.addWidget(self.lcdNumber)
+
+
+        self.verticalLayout.addWidget(self.timeFrame, 0, Qt.AlignRight|Qt.AlignTop)
+
+        self.widget = QWidget(Form)
+        self.widget.setObjectName(u"widget")
+
+        self.verticalLayout.addWidget(self.widget)
+
+        self.verticalSpacer_5 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer_5)
 
         self.expectedText = QTextBrowser(Form)
         self.expectedText.setObjectName(u"expectedText")
+        self.expectedText.setMinimumSize(QSize(0, 200))
         font2 = QFont()
         font2.setFamily(u"Roboto")
         font2.setPointSize(18)
@@ -150,8 +128,13 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.expectedText)
 
+        self.verticalSpacer_4 = QSpacerItem(20, 68, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer_4)
+
         self.textEdit = QTextEdit(Form)
         self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.setMinimumSize(QSize(0, 200))
         font3 = QFont()
         font3.setFamily(u"Roboto")
         font3.setPointSize(20)
@@ -160,18 +143,15 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.textEdit)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_2 = QSpacerItem(20, 68, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
         self.verticalLayout.addItem(self.verticalSpacer_2)
 
         self.typingNextButton = QPushButton(Form)
         self.typingNextButton.setObjectName(u"typingNextButton")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.typingNextButton.sizePolicy().hasHeightForWidth())
-        self.typingNextButton.setSizePolicy(sizePolicy2)
-        self.typingNextButton.setMinimumSize(QSize(100, 50))
+        sizePolicy1.setHeightForWidth(self.typingNextButton.sizePolicy().hasHeightForWidth())
+        self.typingNextButton.setSizePolicy(sizePolicy1)
+        self.typingNextButton.setMinimumSize(QSize(150, 60))
         font4 = QFont()
         font4.setFamily(u"Roboto Black")
         font4.setPointSize(18)
@@ -186,7 +166,7 @@ class Ui_Form(object):
 
         self.verticalLayout.addWidget(self.typingNextButton, 0, Qt.AlignHCenter|Qt.AlignVCenter)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 60, QSizePolicy.Minimum, QSizePolicy.Preferred)
+        self.verticalSpacer_3 = QSpacerItem(20, 68, QSizePolicy.Minimum, QSizePolicy.Preferred)
 
         self.verticalLayout.addItem(self.verticalSpacer_3)
 
@@ -205,6 +185,8 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(QCoreApplication.translate("Form", u"Form", None))
         self.lHeader.setText(QCoreApplication.translate("Form", u"Typing Test", None))
+        self.label_2.setText("")
+        self.lcdNumber.setText(QCoreApplication.translate("Form", u"55", None))
         self.expectedText.setHtml(QCoreApplication.translate("Form", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

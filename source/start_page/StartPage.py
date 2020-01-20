@@ -10,6 +10,14 @@ class StartPage(QtWidgets.QWidget):
         self.ui.setupUi(self)
         self.mainWindow = self.parent()
         self.mainWindow.ui.stackedWidget.addWidget(self)
+        # self.eff = QtWidgets.QGraphicsOpacityEffect(self)
+        # self.setGraphicsEffect(self.eff)
+        # self.a = QtCore.QPropertyAnimation(self.eff, b"opacity")
+        # self.a.setDuration(1000)
+        # self.a.setStartValue(0)
+        # self.a.setEndValue(1)
+        # self.a.setEasingCurve(QtCore.QEasingCurve.Linear)
+        # self.a.start()
         self.setupSignals()
 
     def showDialog(self):

@@ -12,7 +12,7 @@ from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
-    QRadialGradient, QCursor)
+    QRadialGradient)
 from PySide2.QtWidgets import *
 
 class Ui_Form(object):
@@ -20,18 +20,24 @@ class Ui_Form(object):
         if Form.objectName():
             Form.setObjectName(u"Form")
         Form.resize(879, 770)
-        Form.setStyleSheet(u"QPushButton {padding:10px;background-color:red;color:white;border:none;}\n"
+        Form.setAutoFillBackground(False)
+        Form.setStyleSheet(u"\n"
+"QPushButton {padding:10px;background-color:red;color:white;border:none;}\n"
 "QPushButton:hover {background-color:coral;}\n"
 "QPushButton:pressed {margin-top:3px;}\n"
-"QTextBrowser, QTextEdit { border-top: none; border-left: 1px solid lightgrey; border-right: 1px solid lightgrey; border-bottom: 2px solid lightgrey;}")
+"QTextBrowser, QTextEdit { border-top: none; border-left: 1px solid lightgrey; border-right: 1px solid lightgrey; border-bottom: 2px solid lightgrey;}\n"
+"")
         self.horizontalLayout = QHBoxLayout(Form)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
+        self.horizontalLayout.setContentsMargins(20, -1, 20, -1)
         self.scrollArea = QScrollArea(Form)
         self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setStyleSheet(u"")
+        self.scrollArea.setFrameShape(QFrame.NoFrame)
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 859, 750))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 839, 752))
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.HeaderLabel = QLabel(self.scrollAreaWidgetContents)
@@ -134,11 +140,30 @@ class Ui_Form(object):
 
         self.verticalLayout.addItem(self.verticalSpacer_6)
 
-        self.comboBox = QComboBox(self.scrollAreaWidgetContents)
-        self.comboBox.setObjectName(u"comboBox")
-        self.comboBox.setFont(font2)
+        self.frame = QFrame(self.scrollAreaWidgetContents)
+        self.frame.setObjectName(u"frame")
+        font3 = QFont()
+        font3.setFamily(u"Roboto")
+        font3.setPointSize(12)
+        self.frame.setFont(font3)
+        self.frame.setStyleSheet(u"QRadioButton::indicator {\n"
+"width: 20px;\n"
+"height:20px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::checked {\n"
+"image: url(G:/Interview-Helper/assets/images/radio_checked.png);\n"
+"}\n"
+"\n"
+"QRadioButton::indicator::unchecked {\n"
+"image: url(G:/Interview-Helper/assets/images/radio_unchecked.png);\n"
+"}")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Sunken)
+        self.radioButtonsLayout = QVBoxLayout(self.frame)
+        self.radioButtonsLayout.setObjectName(u"radioButtonsLayout")
 
-        self.verticalLayout.addWidget(self.comboBox)
+        self.verticalLayout.addWidget(self.frame)
 
         self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Expanding)
 

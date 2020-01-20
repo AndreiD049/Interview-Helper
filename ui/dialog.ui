@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>610</width>
-    <height>451</height>
+    <width>629</width>
+    <height>583</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,23 +19,30 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {background-color: #3D435E;}
+QLabel {color: #fff;}
+QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;}
+QPushButton:hover {background-color:#CF8349;}
+QPushButton:pressed {margin-top:3px;}</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
+   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
     <widget class="QLabel" name="HeaderLabel">
      <property name="font">
       <font>
-       <family>Roboto Black</family>
-       <pointsize>16</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <family>Roboto Light</family>
+       <pointsize>60</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
-      <string/>
+      <string>Useful info</string>
      </property>
     </widget>
    </item>
-   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+   <item alignment="Qt::AlignHCenter|Qt::AlignTop">
     <widget class="QLabel" name="gifLabel">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -43,21 +50,57 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>592</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>300</height>
+      </size>
+     </property>
      <property name="text">
       <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>C:/Users/Андрей/Desktop/cat.jpg</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
-   <item>
+   <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
     <widget class="QLabel" name="infoLabel">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <family>Roboto</family>
-       <pointsize>14</pointsize>
+       <pointsize>16</pointsize>
       </font>
      </property>
      <property name="text">
-      <string/>
+      <string>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
@@ -81,8 +124,8 @@
     <widget class="QPushButton" name="pushButton">
      <property name="minimumSize">
       <size>
-       <width>100</width>
-       <height>0</height>
+       <width>150</width>
+       <height>60</height>
       </size>
      </property>
      <property name="font">
@@ -94,9 +137,7 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton {padding:10px;background-color:red;color:white;border:none;}
-QPushButton:hover {background-color:coral;}
-QPushButton:pressed {margin-top:3px;}</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>Got it</string>

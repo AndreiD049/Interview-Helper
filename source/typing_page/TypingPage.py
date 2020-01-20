@@ -42,13 +42,14 @@ class TypingPage(QtWidgets.QWidget):
     def startUp(self):
         # show all content get a random file from folder
         cfg = self.mainWindow.controller.config
+        self.currentCfg = cfg["screens"][self.mainWindow.controller.curIdx]
         source_file = self.mainWindow.controller.getRandomFiles(cfg["TypingTestsFolder"], 1)[0]
         fp = open(source_file, "r")
         d = json.load(fp)
         self.ui.expectedText.setText(d["expected"])
         # Just in case, clearing and setting editable
         self.secondsLeft = int(cfg["screens"][self.mainWindow.controller.curIdx]["timeLimit"])
-        self.ui.lcdNumber.display(self.secondsLeft)
+        self.ui.lcdNumber.setText(str(self.secondsLeft))
         # setup timer thread
         self.timer = CountDownWorker(self.secondsLeft)
         self.thread = QtCore.QThread(self)
@@ -127,13 +128,13 @@ class TypingPage(QtWidgets.QWidget):
         for p in paragraphs:
             words = p.split()
             if cw <= len(words) and not is_highlighted:
-                result += f"<span style='color: lightgray'>{' '.join(words[:cw-1])}</span><span style='color: blue;'> {words[cw-1]} </span>"
+                result += f"<span style='color: {self.currentCfg['passedTextColor']}'>{' '.join(words[:cw-1])}</span><span style='color: {self.currentCfg['highlightColor']};'> {words[cw-1]} </span>"
                 is_highlighted = True
                 self.ui.expectedText.setHtml(result)
                 self.ui.expectedText.moveCursor(QtGui.QTextCursor.End)
                 result = f"<span>{' '.join(words[cw:])}</span></p>"
             elif cw > len(words) and not is_highlighted:
-                result += f"<span style='color: lightgray;'>{p}</span><br>"
+                result += f"<span style='color: {self.currentCfg['passedTextColor']};'>{p}</span><br>"
                 cw -= len(words)
             else:
                 result += f"{p}<br>"
@@ -149,7 +150,7 @@ class TypingPage(QtWidgets.QWidget):
     @QtCore.Slot(int)
     def update_timer(self, secondsLeft):
         self.secondsLeft = secondsLeft
-        self.ui.lcdNumber.display(self.secondsLeft)
+        self.ui.lcdNumber.setText(str(self.secondsLeft))
 
     def startTyping(self):
         self.startTime = time() 

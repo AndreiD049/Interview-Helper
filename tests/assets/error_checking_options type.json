@@ -4,9 +4,5 @@
     "answers": [
         "Cat"
     ],
-    "options": [
-        "Cat",
-        "Dog",
-        "Fish"
-    ]
+    "options": "Cat"
 }

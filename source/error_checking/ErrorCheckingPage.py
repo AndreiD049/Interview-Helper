@@ -15,6 +15,7 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
         self.mainWindow.errorCheckingPage = self
         self.mainWindow.ui.stackedWidget.addWidget(self)
         # TODO: setup thread that will countdown
+        
 
     def startUp(self):
         """
@@ -54,8 +55,24 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
                 self.ui.imgLabel.setPixmap(pix)
                 self.ui.textBrowser.setPlainText(d["question"])
                 self.ui.lcdNumber.display(self.currentCfg["timeLimit"])
-                self.ui.comboBox.clear()
-                self.ui.comboBox.addItems(d["options"])
+                # try: 
+                #     for i in self.selectControls:
+                #         i.setParent(None)
+                # except:
+                #     pass
+                self.selectControls = []    # either radiobuttons or checkboxes
+                # Font
+                font = QtGui.QFont("Roboto", 14)
+                if len(d["answers"]) == 1:
+                    #radiobuttons
+                    for opt in d["options"]:
+                        rb = QtWidgets.QRadioButton(opt, self.ui.frame)
+                        rb.setFont(font)
+                        self.selectControls.append(rb)
+                        self.ui.radioButtonsLayout.addWidget(rb)
+                else:
+                    #checkboxes
+                    pass
         except IndexError:
             return False
 

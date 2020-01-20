@@ -5,7 +5,9 @@
         },
         {
             "name": "TypingScreen",
-            "timeLimit": 30
+            "timeLimit": 30,
+            "highlightColor": "rgba(248, 62, 19, 1)",
+            "passedTextColor": "rgba(255, 255, 255, 0.5)"
         },
         {
             "name": "ErrorCheckingScreen",

@@ -1,6 +1,6 @@
 {
     "image": "G:\\Interview-Helper\\assets\\images\\cat.jpg",
-    "question": "Who is on this picture?",
+    "question": ["Who is on this picture?"],
     "answers": [
         "Cat"
     ],
