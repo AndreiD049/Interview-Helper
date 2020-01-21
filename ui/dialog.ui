@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>629</width>
-    <height>583</height>
+    <height>645</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -22,9 +22,15 @@
   <property name="styleSheet">
    <string notr="true">QDialog {background-color: #3D435E;}
 QLabel {color: #fff;}
-QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;}
+QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;font: 16px &quot;Roboto Black&quot;, Arial, Helvetica, sans-serif;}
 QPushButton:hover {background-color:#CF8349;}
-QPushButton:pressed {margin-top:3px;}</string>
+QPushButton:pressed {margin-top:3px;}
+QLabel#HeaderLabel {
+font: 60px &quot;Roboto Light&quot;, Arial, Helvetica, sans-serif;
+}
+QLabel#infoLabel {
+font: 16px &quot;Roboto&quot;, Arial, Helvetica, sans-serif;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
@@ -32,8 +38,9 @@ QPushButton:pressed {margin-top:3px;}</string>
      <property name="font">
       <font>
        <family>Roboto Light</family>
-       <pointsize>60</pointsize>
+       <pointsize>-1</pointsize>
        <weight>50</weight>
+       <italic>false</italic>
        <bold>false</bold>
       </font>
      </property>
@@ -90,7 +97,10 @@ QPushButton:pressed {margin-top:3px;}</string>
      <property name="font">
       <font>
        <family>Roboto</family>
-       <pointsize>16</pointsize>
+       <pointsize>-1</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
@@ -131,9 +141,10 @@ QPushButton:pressed {margin-top:3px;}</string>
      <property name="font">
       <font>
        <family>Roboto Black</family>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <pointsize>-1</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">

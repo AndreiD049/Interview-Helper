@@ -19,7 +19,7 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(629, 583)
+        Dialog.resize(629, 645)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -27,17 +27,23 @@ class Ui_Dialog(object):
         Dialog.setSizePolicy(sizePolicy)
         Dialog.setStyleSheet(u"QDialog {background-color: #3D435E;}\n"
 "QLabel {color: #fff;}\n"
-"QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;}\n"
+"QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;font: 16px \"Roboto Black\", Arial, Helvetica, sans-serif;}\n"
 "QPushButton:hover {background-color:#CF8349;}\n"
-"QPushButton:pressed {margin-top:3px;}")
+"QPushButton:pressed {margin-top:3px;}\n"
+"QLabel#HeaderLabel {\n"
+"font: 60px \"Roboto Light\", Arial, Helvetica, sans-serif;\n"
+"}\n"
+"QLabel#infoLabel {\n"
+"font: 16px \"Roboto\", Arial, Helvetica, sans-serif;\n"
+"}")
         self.verticalLayout = QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.HeaderLabel = QLabel(Dialog)
         self.HeaderLabel.setObjectName(u"HeaderLabel")
         font = QFont()
         font.setFamily(u"Roboto Light")
-        font.setPointSize(60)
         font.setBold(False)
+        font.setItalic(False)
         font.setWeight(50);
         self.HeaderLabel.setFont(font)
 
@@ -61,7 +67,9 @@ class Ui_Dialog(object):
         self.infoLabel.setMinimumSize(QSize(0, 100))
         font1 = QFont()
         font1.setFamily(u"Roboto")
-        font1.setPointSize(16)
+        font1.setBold(False)
+        font1.setItalic(False)
+        font1.setWeight(50);
         self.infoLabel.setFont(font1)
         self.infoLabel.setAlignment(Qt.AlignCenter)
         self.infoLabel.setWordWrap(True)
@@ -77,9 +85,9 @@ class Ui_Dialog(object):
         self.pushButton.setMinimumSize(QSize(150, 60))
         font2 = QFont()
         font2.setFamily(u"Roboto Black")
-        font2.setPointSize(18)
-        font2.setBold(True)
-        font2.setWeight(75);
+        font2.setBold(False)
+        font2.setItalic(False)
+        font2.setWeight(50);
         self.pushButton.setFont(font2)
         self.pushButton.setStyleSheet(u"")
         self.pushButton.setAutoDefault(False)

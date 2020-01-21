@@ -34,6 +34,9 @@ def select_n_valid_files(validator, n, path, ext=None):
         valid_results = list(map(validator, files))
     return files
 
+def getItemsGenerator(layout):
+    return (layout.itemAt(idx) for idx in range(layout.count()))
+
 if __name__ == "__main__":
     from validators import ValidatorErrorChecking
     print(select_n_valid_files(ValidatorErrorChecking.validate, 3, r"D:\Interview\data\error_checking", "json"))

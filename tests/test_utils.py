@@ -10,7 +10,7 @@ class TestUtils(unittest.TestCase):
     def test_random_files(self):
         self.assertEquals(len(u.select_n_random_files(1, os.path.join(self.path, "empty_folder"), "json")), 0)
         self.assertIsInstance(u.select_n_random_files(1, os.path.join(self.path, "empty_folder"), "json"), list)
-        self.assertEquals(len(u.select_n_random_files(3, os.path.join(self.path, "folder"), "json")), 3)
+        self.assertEquals(len(u.select_n_random_files(2, os.path.join(self.path, "folder"), "json")), 2)
         self.assertLess(len(u.select_n_random_files(30, os.path.join(self.path, "folder"), "json")), 30)
         
     def test_random_valid_files(self):

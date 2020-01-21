@@ -1,8 +1,10 @@
 import json
 import os
 from PySide2 import QtCore, QtGui, QtWidgets
+from source.utils import getItemsGenerator
 from source.error_checking.ui_error_checking import Ui_Form
 from source.dialog.Dialog import Dialog
+from source.error_checking.OptionControls import CheckButton
 
 
 class ErrorCheckingScreen(QtWidgets.QWidget):
@@ -32,8 +34,6 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
         self.populateScreen()
         self.setupSignals()
         self.showDialog()
-        # print(self.source_files)
-        # print(self.filesCount)
 
     def showDialog(self):
         d = Dialog() 
@@ -53,37 +53,36 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
                 d = json.load(fp)
                 pix = QtGui.QPixmap(d["image"])
                 self.ui.imgLabel.setPixmap(pix)
-                self.ui.textBrowser.setPlainText(d["question"])
-                self.ui.lcdNumber.display(self.currentCfg["timeLimit"])
-                # try: 
-                #     for i in self.selectControls:
-                #         i.setParent(None)
-                # except:
-                #     pass
-                self.selectControls = []    # either radiobuttons or checkboxes
-                # Font
-                font = QtGui.QFont("Roboto", 14)
+                self.ui.questionLabel.setText(d["question"])
+                self.ui.lcdNumber.setText(str(self.currentCfg["timeLimit"]))
+                # Clear previous items
+                for i in list(getItemsGenerator(self.ui.selectBox)):
+                    i.widget().setParent(None)
                 if len(d["answers"]) == 1:
-                    #radiobuttons
+                    # radiobutton
                     for opt in d["options"]:
-                        rb = QtWidgets.QRadioButton(opt, self.ui.frame)
-                        rb.setFont(font)
-                        self.selectControls.append(rb)
-                        self.ui.radioButtonsLayout.addWidget(rb)
+                        rb = QtWidgets.QRadioButton(opt, self.ui.OptionFrame)
+                        rb.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                        rb.setMinimumWidth(250)
+                        self.ui.selectBox.addWidget(rb, 0, QtCore.Qt.AlignHCenter)
                 else:
                     #checkboxes
-                    pass
+                    for opt in d["options"]:
+                        rb = CheckButton(opt, self.ui.OptionFrame)
+                        rb.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+                        rb.setMinimumWidth(250)
+                        self.ui.selectBox.addWidget(rb, 0, QtCore.Qt.AlignHCenter)
         except IndexError:
             return False
 
     def setupSignals(self):
-        self.ui.pushButton.clicked.connect(self.finishTask)
+        self.ui.typingNextButton.clicked.connect(self.finishTask)
 
     def cleanup(self):
         """
         disconnect signals
         """
-        self.ui.pushButton.clicked.disconnect()
+        self.ui.typingNextButton.clicked.disconnect()
 
     def finishTask(self):
         self.gatherResults()

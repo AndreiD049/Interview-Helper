@@ -31,11 +31,22 @@
   <property name="styleSheet">
    <string notr="true">QWidget#StartPage {background-color: #2D3246;}
 QLabel {color: #fff;}
-QLabel#AssistiveText {color: rgba(255, 255, 255, 0.5);}
+QLabel#AssistiveText {
+color: rgba(255, 255, 255, 0.5);
+font: 14px &quot;Roboto Light&quot;, Arial, Helvetica, sans-serif;
+}
 QLineEdit {background-color: #3D435E;border-radius: 4px;border: 1px solid #E9E8E8;color: #fff;}
-QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;}
+QPushButton {padding:20px;background-color:#F83E13;color:white;border:none;border-radius:4px;font: 16px &quot;Roboto Black&quot;, Arial, Helvetica, sans-serif;}
 QPushButton:hover {background-color:#CF8349;}
-QPushButton:pressed {margin-top:3px;}</string>
+QPushButton:pressed {margin-top:3px;}
+QLabel#HeaderLabel {
+font: 96px &quot;Roboto Light&quot;, Arial, Helvetica, sans-serif;
+}
+QLabel#SubHeaderLabel {
+font: 60px &quot;Roboto Light&quot;, Arial, Helvetica, sans-serif;
+}
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -52,11 +63,14 @@ QPushButton:pressed {margin-top:3px;}</string>
     </spacer>
    </item>
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="HeaderLabel">
      <property name="font">
       <font>
        <family>Roboto Light</family>
-       <pointsize>96</pointsize>
+       <pointsize>-1</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
@@ -65,11 +79,14 @@ QPushButton:pressed {margin-top:3px;}</string>
     </widget>
    </item>
    <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="SubHeaderLabel">
      <property name="font">
       <font>
        <family>Roboto Light</family>
-       <pointsize>60</pointsize>
+       <pointsize>-1</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
@@ -128,9 +145,11 @@ QPushButton:pressed {margin-top:3px;}</string>
      </property>
      <property name="font">
       <font>
-       <family>Roboto</family>
-       <pointsize>12</pointsize>
+       <family>Roboto Light</family>
+       <pointsize>-1</pointsize>
+       <weight>50</weight>
        <italic>false</italic>
+       <bold>false</bold>
       </font>
      </property>
      <property name="text">
@@ -165,9 +184,10 @@ QPushButton:pressed {margin-top:3px;}</string>
      <property name="font">
       <font>
        <family>Roboto Black</family>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
+       <pointsize>-1</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
       </font>
      </property>
      <property name="cursor">
