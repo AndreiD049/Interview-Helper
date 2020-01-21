@@ -16,7 +16,7 @@ class CountDownWorker(QtCore.QObject):
         self.left = seconds_left
 
     @QtCore.Slot()
-    def update_timer(self):
+    def updateTimer(self):
         while self.left > 0:
             QtCore.QThread.msleep(1000)
             self.left -= 1
@@ -61,7 +61,31 @@ class TypingPage(QtWidgets.QWidget):
 
         # format text and show Tutorial dialog
         self.format_text()
-        self.showDialog()
+        self.fadeIn(self.showDialog)
+
+    def fadeIn(self, func=None):
+        self.eff = QtWidgets.QGraphicsOpacityEffect(self)
+        self.setGraphicsEffect(self.eff)
+        self.a = QtCore.QPropertyAnimation(self.eff, b"opacity")
+        if func:
+            self.a.finished.connect(func)
+        self.a.setDuration(1000)
+        self.a.setStartValue(0)
+        self.a.setEndValue(1)
+        self.a.setEasingCurve(QtCore.QEasingCurve.Linear)
+        self.a.start()
+
+    def fadeOut(self, func=None):
+        self.eff = QtWidgets.QGraphicsOpacityEffect(self)
+        self.setGraphicsEffect(self.eff)
+        self.a = QtCore.QPropertyAnimation(self.eff, b"opacity")
+        if func:
+            self.a.finished.connect(func)
+        self.a.setDuration(1000)
+        self.a.setStartValue(1)
+        self.a.setEndValue(0)
+        self.a.setEasingCurve(QtCore.QEasingCurve.Linear)
+        self.a.start()
 
     def cleanup(self):
         # cleanup, disconnect signals etc
@@ -69,12 +93,12 @@ class TypingPage(QtWidgets.QWidget):
         self.ui.textEdit.textChanged.disconnect()
 
     def showDialog(self):
-        d = Dialog() 
+        self.d = Dialog() 
         mov = QtGui.QMovie(r"G:\Interview-Helper\assets\images\cat.gif")
-        d.ui.gifLabel.setMovie(mov)
+        self.d.ui.gifLabel.setMovie(mov)
         mov.start()
-        d.setWindowModality(QtCore.Qt.ApplicationModal)
-        d.exec_()
+        self.d.setWindowModality(QtCore.Qt.ApplicationModal)
+        self.d.show()
 
     def showTimeOutAlert(self):
         d = Dialog()
@@ -88,9 +112,9 @@ class TypingPage(QtWidgets.QWidget):
         self.ui.textEdit.textChanged.connect(self.calculateCurrentWord)
         self.ui.textEdit.textChanged.connect(self.format_text)
         self.ui.textEdit.selectionChanged.connect(self.startTyping)
-        self.timer.timer_signal.connect(self.update_timer)
+        self.timer.timer_signal.connect(self.updateTimer)
         self.timer.timer_end.connect(self.thread.quit)
-        self.thread.started.connect(self.timer.update_timer)
+        self.thread.started.connect(self.timer.updateTimer)
         self.thread.finished.connect(self.endTyping)
 
     def finishTask(self):
@@ -115,7 +139,7 @@ class TypingPage(QtWidgets.QWidget):
         if self.thread.isFinished():
             self.gatherResults()
             self.cleanup()
-            self.mainWindow.controller.nextScreen()
+            self.fadeOut(self.mainWindow.controller.nextScreen)
 
     def format_text(self):
         # TODO: rewrite using regular expressions
@@ -148,7 +172,7 @@ class TypingPage(QtWidgets.QWidget):
         self.currentWord = words if words != 0 else 1
 
     @QtCore.Slot(int)
-    def update_timer(self, secondsLeft):
+    def updateTimer(self, secondsLeft):
         self.secondsLeft = secondsLeft
         self.ui.lcdNumber.setText(str(self.secondsLeft))
 

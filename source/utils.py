@@ -28,8 +28,19 @@ def select_n_valid_files(validator, n, path, ext=None):
             # move error files to other folder
             if not r:
                 error_file = files[idx]
-                # move to error folder
-                os.rename(error_file, os.path.join(error_fld, os.path.basename(os.path.normpath(error_file))))
+                # move to error folder, if file already exists there, just rename it
+                try:
+                    os.rename(error_file, os.path.join(error_fld, os.path.basename(os.path.normpath(error_file))))
+                except FileExistsError:
+                    moved = False
+                    filenum = 1
+                    while not moved:
+                        try:
+                            print(f"trying to move {filenum} - {os.path.join(error_fld, str(filenum) + '_' + os.path.basename(os.path.normpath(error_file)))}")
+                            os.rename(error_file, os.path.join(error_fld, str(filenum) + "_" + os.path.basename(os.path.normpath(error_file))))
+                            moved = True
+                        except FileExistsError:
+                            filenum += 1
         files = select_n_random_files(n, path, ext)
         valid_results = list(map(validator, files))
     return files

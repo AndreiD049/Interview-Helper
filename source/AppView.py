@@ -22,7 +22,6 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def startUp(self):
         self.startPage = StartPage(self) 
-        self.startPage.showDialog()
 
 
 if __name__ == "__main__":

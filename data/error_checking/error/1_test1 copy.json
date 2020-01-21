@@ -1,5 +1,5 @@
 {
-    "image": ".\\assets\\images\\test1.png",
+    "image": ".\\aussets\\images\\test1.png",
     "question": "What is on the picture?",
     "answers": [
         "table",

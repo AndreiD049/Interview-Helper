@@ -7,6 +7,27 @@ from source.dialog.Dialog import Dialog
 from source.error_checking.OptionControls import CheckButton
 
 
+
+class CountDownWorker(QtCore.QObject):
+
+    timer_signal = QtCore.Signal(int)
+    timer_end = QtCore.Signal()
+
+    def __init__(self, secondsLeft):
+        super(CountDownWorker, self).__init__()
+        self.left = secondsLeft
+
+    @QtCore.Slot()
+    def updateTimer(self):
+        while self.left > 0:
+            QtCore.QThread.msleep(1000)
+            self.left -= 1
+            self.timer_signal.emit(self.left)
+            if QtCore.QThread.currentThread().isInterruptionRequested():
+                break
+        self.timer_end.emit()
+
+
 class ErrorCheckingScreen(QtWidgets.QWidget):
 
     def __init__(self, *args, **kwargs):
@@ -16,7 +37,6 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
         self.mainWindow = self.parent()
         self.mainWindow.errorCheckingPage = self
         self.mainWindow.ui.stackedWidget.addWidget(self)
-        # TODO: setup thread that will countdown
         
 
     def startUp(self):
@@ -29,15 +49,18 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
         """
         cfg = self.mainWindow.controller.config
         self.currentCfg = cfg["screens"][self.mainWindow.controller.curIdx]
+        self.secondsLeft = self.currentCfg["timeLimit"]
         self.filesCount = self.currentCfg["filesCount"]
         self.source_files = self.mainWindow.controller.getRandomFiles(cfg["ErrorCheckingTestsFolder"], self.filesCount)
         self.populateScreen()
         self.setupSignals()
         self.showDialog()
+        self.setupThread()
+        self.thread.start()
 
     def showDialog(self):
         d = Dialog() 
-        mov = QtGui.QMovie(r"G:\Interview-Helper\assets\images\cat.gif")
+        mov = QtGui.QMovie(r".\assets\images\cat.gif")
         d.ui.gifLabel.setMovie(mov)
         mov.start()
         d.setWindowModality(QtCore.Qt.ApplicationModal)
@@ -54,7 +77,11 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
                 pix = QtGui.QPixmap(d["image"])
                 self.ui.imgLabel.setPixmap(pix)
                 self.ui.questionLabel.setText(d["question"])
-                self.ui.lcdNumber.setText(str(self.currentCfg["timeLimit"]))
+                # reset the time limit
+                self.secondsLeft = self.currentCfg["timeLimit"]
+                self.ui.lcdNumber.setText(str(self.secondsLeft))
+
+                self.ui.questionCounter.setText(f"{self.filesCount-len(self.source_files)}/{self.filesCount}")
                 # Clear previous items
                 for i in list(getItemsGenerator(self.ui.selectBox)):
                     i.widget().setParent(None)
@@ -76,7 +103,19 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
             return False
 
     def setupSignals(self):
-        self.ui.typingNextButton.clicked.connect(self.finishTask)
+        self.ui.typingNextButton.clicked.connect(self.btnClick)
+
+
+    def setupThread(self):
+        # setup a new worker
+        self.thread = QtCore.QThread(self)
+        self.timer = CountDownWorker(self.secondsLeft)
+        self.timer.moveToThread(self.thread)
+        self.timer.timer_signal.connect(self.updateTimer)
+        self.timer.timer_end.connect(self.thread.quit)
+        self.thread.started.connect(self.timer.updateTimer)
+        self.thread.finished.connect(self.threadbtnClick)
+
 
     def cleanup(self):
         """
@@ -84,10 +123,37 @@ class ErrorCheckingScreen(QtWidgets.QWidget):
         """
         self.ui.typingNextButton.clicked.disconnect()
 
-    def finishTask(self):
+    def btnClick(self):
+        """
+        When clicking the button, we want just to stop the thread.
+        It's finish signal will do the rest
+        """
+        if self.thread.isRunning():
+            self.thread.requestInterruption()
+            self.thread.quit()
+            self.thread.wait()
+
+    def threadbtnClick(self):
+        """
+        When thread is finished, we want:
+        1. to gather the current results
+        2. if there are any more questions, show the next
+        3. set up a new thread
+        4. start it 
+        """
         self.gatherResults()
-        self.cleanup()
-        self.mainWindow.controller.nextScreen()
+        if len(self.source_files) != 0:
+            self.populateScreen()
+            self.setupThread()
+            self.thread.start()
+        else:
+            self.cleanup()
+            self.mainWindow.controller.nextScreen()
+
+    @QtCore.Slot(int)
+    def updateTimer(self, secondsLeft):
+        self.secondsLeft = secondsLeft
+        self.ui.lcdNumber.setText(str(self.secondsLeft))
 
     def gatherResults(self):
         pass

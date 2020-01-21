@@ -1,5 +1,5 @@
 {
-    "image": "G:\\Interview-Helper\\assets\\images\\cat.jpg",
+    "image": ".\\assets\\images\\cat.jpg",
     "question": "Who is on this picture?",
     "answers": [
         "Cat"
